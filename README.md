@@ -1,7 +1,7 @@
-** LIVE SITE
+## LIVE SITE
 http://techtalkuii.herokuapp.com
 
-** HOW TO USE LOCALLY
+## HOW TO USE LOCALLY
 
 * Install Ruby dan Rail. App ini menggunakan Ruby 2.1.2 dan Rail 4.1.1
 
@@ -19,6 +19,6 @@ http://techtalkuii.herokuapp.com
 
 * Gunakan di 2 browser berbeda
 
-** RESOURCES
+## RESOURCES
 
 * https://devcenter.heroku.com/articles/pusher
