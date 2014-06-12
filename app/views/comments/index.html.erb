@@ -1,27 +1,23 @@
-<h1>Listing comments</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Author</th>
-      <th>Message</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.author %></td>
-        <td><%= comment.message %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Comment', new_comment_path %>
+<h1>Tech Talk UII Room</h1>
+<div class='list-comment'>
+  <% @comments.each do |comment| %>
+    <h4><%= comment.author %></h4>
+    <p><%= comment.message %></p>
+  <% end %>
+</div>
+<h2>Put your comment here</h2>
+<%= form_for @comment, remote: true do |f| %>
+  <p>
+    <%= f.text_field :author, placeholder: 'Author' %>
+    <%= f.text_field :message, placeholder: 'Message' %>
+  </p>
+  <%= f.submit %>
+<% end %>
+<script src="//js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+ var pusher = new Pusher('<%= Pusher.key %>'); // uses your APP KEY
+ var channel = pusher.subscribe('message');
+ channel.bind('new_message', function(data) {
+     $('.list-comment').append("<h4>"+data.author+"</h4><p>"+data.message+"</p>");
+ });
+</script>
