@@ -6,7 +6,7 @@
   <% end %>
 </div>
 <h2>Put your comment here</h2>
-<%= form_for @comment, remote: true do |f| %>
+<%= form_for @comment do |f| %>
   <p>
     <%= f.text_field :author, placeholder: 'Author' %>
     <%= f.text_field :message, placeholder: 'Message' %>
@@ -15,9 +15,9 @@
 <% end %>
 <script src="//js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
 <script type="text/javascript">
- var pusher = new Pusher('<%= Pusher.key %>'); // uses your APP KEY
- var channel = pusher.subscribe('message');
- channel.bind('new_message', function(data) {
-     $('.list-comment').append("<h4>"+data.author+"</h4><p>"+data.message+"</p>");
- });
+var pusher = new Pusher('<%= Pusher.key %>'); // uses your APP KEY
+var channel = pusher.subscribe('message');
+channel.bind('new_message', function(data) {
+    $('.list-comment').append("<h4>"+data.author+"</h4><p>"+data.message+"</p>");
+    });
 </script>
