@@ -6,7 +6,7 @@
   <% end %>
 </div>
 <h2>Put your comment here</h2>
-<%= form_for @comment do |f| %>
+<%= form_for @comment, remote: true do |f| %>
   <p>
     <%= f.text_field :author, placeholder: 'Author' %>
     <%= f.text_field :message, placeholder: 'Message' %>
